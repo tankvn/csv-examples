@@ -16,7 +16,11 @@ namespace CSVExample.Services
 
 		public void WriteCSV<T>(List<T> records)
 		{
-			throw new NotImplementedException();
+			using (var writer = new StreamWriter("D:\\file.csv"))
+			using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+			{
+				csv.WriteRecords(records);
+			}
 		}
 	}
 }
